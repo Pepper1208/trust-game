@@ -128,7 +128,7 @@ int determine(int code, int currentIndex, int lastEMove, int last2EMove, int las
 		case 8: // Random
 			return distribution(generator) % 2;
 			
-		default:
+		default: // Error-Handling
 			cout << "[ERROR] Strategy Code is out of range. \n";
 			return -1;
 	}
@@ -147,7 +147,6 @@ void fullGame(int gameSize, int code1, int code2, int p1[], int p2[])
 		
 		if (code1 != -1) p1[i] = determine(code1, i-4, p2[i-1], p2[i-2], p1[i-1], first4move2);
 		p2[i] = determine(code2, i-4, p1[i-1], p1[i-2], p2[i-1], first4move1);
-
 	}
 	
 	cout << codeMap.at(code1) << " vs " << codeMap.at(code2) << "\n\n";
@@ -172,6 +171,8 @@ int main()
 		cout << "Input Game Size (>0): ";
 		cin >> gameSize;
 		if (gameSize > 0) break;
+		
+		// Error-Handling
 		cout << "[ERROR] Game Size is not a positive integer. \n\n";
 	}
 	cout << "\n";
@@ -192,6 +193,8 @@ int main()
 		cout << "Input Code 1 (-1 for PvE): ";
 		cin >> code1;
 		if ((code1 == -1) || (code1 >= 1 && code1 <= 8)) break;
+		
+		// Error-Handling
 		cout << "[ERROR] Code 1 is out of range. You are only allowed to input -1 or 1~8. \n\n";
 	}
 	cout << "\n";
@@ -200,6 +203,8 @@ int main()
 		cout << "Input Code 2: ";
 		cin >> code2;
 		if (code2 >= 1 && code2 <= 8) break;
+		
+		// Error-Handling
 		cout << "[ERROR] Code 2 is out of range. You are only allowed to input 1~8. \n\n";
 	}
 	
