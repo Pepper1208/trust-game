@@ -149,14 +149,6 @@ void singleLoop(int population, int code[], int res[], int gameSize, int elimAnd
 
 int main()
 {
-	// For a single cycle with 2 strategies
-	
-	//~ startCycle(15, 1, 1);
-	//~ startCycle(15, 1, 2);
-	//~ startCycle(15, 2, 2);
-	
-	// Manual Debugging
-	
 	int population;
 	while (true)
 	{
@@ -165,16 +157,24 @@ int main()
 		if (population >= 10) break;
 		
 		// Error-Handling
-		cout << "[ERROR] The population must be a positive integer bigger or equal than 10. \n\n";
+		cout << "\033[1;31m[ERROR] The population must be a positive integer bigger or equal than 10. \n\n";
+		cout << "\033[1;0m";
 	}
+	cout << "\n";
+	
 	//~ cout << population << "\n\n";
+	
+	printCodeInstruction();
 	
 	int tempStoring[STRATEGYAMOUNT];
 	int temp; // Storing the input amount of population
 	while (true)
 	{
 		temp = 0;
-		cout << "Modify the types of population: ";
+		cout << "Please fill in 8 numbers. \nEach number represent different amount of strategies.\n";
+		cout << "For example, 1 2 3 0 0 0 0 0 means 1 cooperator, 2 cheaters and 3 copycats in the game.\n";
+		cout << "Sum of the 8 numbers must be the same as the population input before.\n";
+		cout << "Modify the types of population (Separate by space): ";
 		for (int i = 0; i < STRATEGYAMOUNT; ++i)
 		{
 			cin >> tempStoring[i];
@@ -184,7 +184,8 @@ int main()
 		//~ cout << temp;
 		
 		// Error-Handling
-		cout << "[ERROR] Difference between two inputs of amount of population. \n\n";
+		cout << "\033[1;31m[ERROR] Difference between two inputs of amount of population. \n\n";
+		cout << "\033[1;0m";
 	}
 	int playersCode[population];
 	int playersRes[population];
@@ -201,29 +202,33 @@ int main()
 		}
 	}
 	
+	cout << "\n";
 	int gameSize;
 	while (true)
 	{
-		cout << "Input Game Size (>0): ";
+		cout << "Input Game Size (How many rounds per match for each 2 players?): ";
 		cin >> gameSize;
 		if (gameSize > 0) break;
 		
 		// Error-Handling
-		cout << "[ERROR] Game Size is not a positive integer. \n";
+		cout << "\033[1;31m[ERROR] Game Size is not a positive integer. \n";
+		cout << "\033[1;0m";
 	}
 	
 	//~ for (int i = 0; i < population; ++i) cout << playersCode[i] << " ";
 	//~ cout << "\n\n";
 	
+	cout << "\n";
 	int loopAmount;
 	while (true)
 	{
-		cout << "Input Amount of Cycles (>0): ";
+		cout << "Input Amount of Cycles (How many tournaments?): ";
 		cin >> loopAmount;
 		if (loopAmount > 0) break;
 		
 		// Error-Handling
-		cout << "[ERROR] Game Size is not a positive integer. \n\n";
+		cout << "\033[1;31m[ERROR] Amount of cycles is not a positive integer. \n\n";
+		cout << "\033[1;0m";
 	}
 	
 	// Game
@@ -231,7 +236,7 @@ int main()
 	cout << "\n";
 	for (int i = 1; i <= loopAmount; ++i)
 	{
-		printf("[Cycle %d]\n\n", i);
+		cout << "\033[1;32m[Cycle " << i << "]\n\n" << "\033[1;0m";
 		for (int j = 0; j < population; ++j) playersRes[j] = 0;
 		singleLoop(population, playersCode, playersRes, gameSize);
 	}

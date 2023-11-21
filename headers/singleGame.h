@@ -2,6 +2,7 @@
 #define SINGLEGAME_H
 
 #include <utility>
+void printCodeInstruction();
 std::pair<int, int> startCycle(int gameSize, int code1, int code2);
 
 #endif /* SINGLEGAME_H */
