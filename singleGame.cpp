@@ -1,4 +1,5 @@
 #include ".\headers\singleGame.h"
+
 #include <iostream>
 #include <string>
 #include <utility>
@@ -162,6 +163,7 @@ void fullGame(int gameSize, int code1, int code2, int p1[], int p2[])
 	pair<int, int> res = playGame(gameSize, p1, p2);
 	cout << "Player 1 Score: " << res.first << "\n";
 	cout << "Player 2 Score: " << res.second << "\n";
+	cout << "\n";
 }
 
 void startCycle(int gameSize, int code1, int code2)
@@ -178,6 +180,8 @@ void startCycle(int gameSize, int code1, int code2)
 		
 	fullGame(gameSize, code1, code2, p1, p2);
 }
+
+// Manual Debugging ----------------------------------------------------
 
 //~ int main()
 //~ {
@@ -241,3 +245,5 @@ void startCycle(int gameSize, int code1, int code2)
 
 	//~ return 0;
 //~ }
+
+// Manual Debugging ----------------------------------------------------
