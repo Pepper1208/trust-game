@@ -136,7 +136,7 @@ int determine(int code, int currentIndex, int lastEMove, int last2EMove, int las
 	}
 }
 
-void fullGame(int gameSize, int code1, int code2, int p1[], int p2[])
+pair<int, int> fullGame(int gameSize, int code1, int code2, int p1[], int p2[])
 {
 	int first4move1 = 0, first4move2 = 0;
 	for (int i = 4; i < gameSize + 4; ++i)
@@ -151,22 +151,23 @@ void fullGame(int gameSize, int code1, int code2, int p1[], int p2[])
 		p2[i] = determine(code2, i-4, p1[i-1], p1[i-2], p2[i-1], first4move1);
 	}
 	
-	cout << codeMap.at(code1) << " vs " << codeMap.at(code2) << "\n\n";
+	//~ cout << codeMap.at(code1) << " vs " << codeMap.at(code2) << "\n\n";
 	
-	cout << "Player 1: ";
-	for (int i = 4; i < gameSize + 4; ++i) cout << p1[i] << " ";
-	cout << "\n";
-	cout << "Player 2: ";
-	for (int i = 4; i < gameSize + 4; ++i) cout << p2[i] << " ";
-	cout << "\n\n";
+	//~ cout << "Player 1: ";
+	//~ for (int i = 4; i < gameSize + 4; ++i) cout << p1[i] << " ";
+	//~ cout << "\n";
+	//~ cout << "Player 2: ";
+	//~ for (int i = 4; i < gameSize + 4; ++i) cout << p2[i] << " ";
+	//~ cout << "\n\n";
 	
 	pair<int, int> res = playGame(gameSize, p1, p2);
-	cout << "Player 1 Score: " << res.first << "\n";
-	cout << "Player 2 Score: " << res.second << "\n";
-	cout << "\n";
+	//~ cout << "Player 1 Score: " << res.first << "\n";
+	//~ cout << "Player 2 Score: " << res.second << "\n";
+	//~ cout << "\n";
+	return res;
 }
 
-void startCycle(int gameSize, int code1, int code2)
+pair<int, int> startCycle(int gameSize, int code1, int code2)
 {
 	int p1[gameSize + 4], p2[gameSize + 4];
 	
@@ -178,7 +179,8 @@ void startCycle(int gameSize, int code1, int code2)
 	
 	//~ printCodeInstruction();
 		
-	fullGame(gameSize, code1, code2, p1, p2);
+	pair<int, int> temp = fullGame(gameSize, code1, code2, p1, p2);
+	return temp;
 }
 
 // Manual Debugging ----------------------------------------------------
