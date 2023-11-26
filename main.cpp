@@ -6,7 +6,11 @@
 #include <vector>
 using namespace std;
 
-const int STRATEGYAMOUNT = 8;
+// Compile:		g++ -c singleGame.cpp main.cpp
+// Build:		g++ -o main.exe singleGame.o main.o
+// Run:			.\main.exe
+
+const int STRATEGYAMOUNT = 9;
 
 /*
  * Code for each strategies (personalities):
@@ -171,9 +175,9 @@ int main()
 	while (true)
 	{
 		temp = 0;
-		cout << "Please fill in 8 numbers. \nEach number represent different amount of strategies.\n";
-		cout << "For example, 1 2 3 0 0 0 0 0 means 1 cooperator, 2 cheaters and 3 copycats in the game.\n";
-		cout << "Sum of the 8 numbers must be the same as the population input before.\n";
+		cout << "Please fill in 9 numbers. \nEach number represent different amount of strategies.\n";
+		cout << "For example, 1 2 3 0 0 0 0 0 0 means 1 cooperator, 2 cheaters and 3 copycats in the game.\n";
+		cout << "Sum of the 9 numbers must be the same as the population input before.\n";
 		cout << "Modify the types of population (Separate by space): ";
 		for (int i = 0; i < STRATEGYAMOUNT; ++i)
 		{
