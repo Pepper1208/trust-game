@@ -7,7 +7,7 @@ using namespace std;
 // Build:		g++ -o manual.exe singleGame.o singleGameManual.o
 // Run:			.\manual.exe
 
-const int STRATEGYAMOUNT = 9;
+const int STRATEGYAMOUNT = 10;
 
 // A Single Cycle
 
@@ -32,9 +32,7 @@ int main()
 		p1[i] = -1;
 		p2[i] = -1;
 	}
-		
-	printCodeInstruction();
-		
+				
 	int code1, code2;
 	while (true)
 	{

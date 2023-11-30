@@ -10,26 +10,36 @@ using namespace std;
 // Build:		g++ -o main.exe singleGame.o main.o
 // Run:			.\main.exe
 
-const int STRATEGYAMOUNT = 9;
+const int STRATEGYAMOUNT = 10;
 
 /*
  * Code for each strategies (personalities):
- * -1 Manual		Manual Input.
- * 1 Cooperator		Always Cooperate.
- * 2 Cheater		Always Cheat.
- * 3 Copycat		Cooperate in the first round.
- * 					Copy enemy's last move every time.
- * 4 Grunder		Always cooperate until enemy cheats.
- * 					Then, always cheat.
- * 5 Detective		Start with Cooperate, Cheat, Cooperate, Cooperate. 
- * 					If enemy cheats back, act like COPYCAT.
- * 					If enemy never cheats back, act like CHEATER.
- * 6 Copykitten		Act like COPYCAT.
- * 					However, only cheat when enemy cheats twice.
- * 7 Simpleton		Start with Cooperate.
- * 					If enemy cooperate, do the same thing as last move.
- * 					If enemy cheat, do the opposite thing as last move.
- * 8 Random			Cooperate or Cheat with a 50/50 chance.
+ * -1	Manual				Manual Input.
+ * 1	Cooperator		  	Always Cooperate.
+ * 2	Cheater		  		Always Cheat.
+ * 3	Copycat		  		Cooperate in the first round.
+ * 					 	 	Copy enemy's last move every time.
+ * 4	Grudger		  		Always cooperate until enemy cheats.
+ * 					  		Then, always cheat.
+ * 5	Detective		  	Start with Cooperate, Cheat, Cooperate, Cooperate. 
+ * 					  		If enemy cheats back, act like COPYCAT.
+ * 					  		If enemy never cheats back, act like CHEATER.
+ * 6	Copykitten		  	Act like COPYCAT.
+ * 					  		However, only cheat when enemy cheats twice.
+ * 7	Simpleton		  	Start with Cooperate.
+ * 					  		If enemy cooperate, do the same thing as last move.
+ * 					  		If enemy cheat, do the opposite thing as last move.
+ * 8	Random				Cooperate or Cheat with a 50/50 chance.
+ * 
+ * [Experimental Strategies(Personalities)]
+ * 
+ * 9 	Reverse copycat     Cheat in the first round.
+ *                       	Copy the opposite move of the enemy's last move every time.
+ * 10	Detective Pro Max	Start with Cheat, Cooperate, Cheat.
+ * 							If the opponent cooperates all the time, acts like Cooperator.
+ * 							If the opponent If the opponent cheats all the time, then acts like Cheater.
+ * 							If the opponent cooperates twice and cheats once, cooperates in the fourth round and acts like Copycat.
+ * 							If the opponent cooperates once and cheats twice, cheats in the fourth round and acts like Copycat.
  */
 
 void singleLoop(int population, int code[], int res[], int gameSize, int elimAndReplace = 5)
@@ -167,8 +177,6 @@ int main()
 	cout << "\n";
 	
 	//~ cout << population << "\n\n";
-	
-	printCodeInstruction();
 	
 	int tempStoring[STRATEGYAMOUNT];
 	int temp; // Storing the input amount of population
