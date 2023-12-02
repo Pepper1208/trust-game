@@ -31,11 +31,12 @@ using namespace std;
  * 
  * 9 	Reverse copycat     Cheat in the first round.
  *                       	Copy the opposite move of the enemy's last move every time.
- * 10	Detective Pro Max	Start with Cheat, Cooperate, Cheat.
+ * 10	Detective Pro		Start with Cheat, Cooperate, Cheat.
  * 							If the opponent cooperates all the time, acts like Cooperator.
  * 							If the opponent If the opponent cheats all the time, then acts like Cheater.
  * 							If the opponent cooperates twice and cheats once, cooperates in the fourth round and acts like Copycat.
  * 							If the opponent cooperates once and cheats twice, cheats in the fourth round and acts like Copycat.
+ * 11	Detective Pro Max
  */
 
 map<int, string> codeMap = {
@@ -49,7 +50,8 @@ map<int, string> codeMap = {
 		{ 7, "Simpleton" },
 		{ 8, "Random" }, 
 		{ 9, "Reverse Copycat"}, 
-		{ 10, "Detective Pro Max"}
+		{ 10, "Detective Pro"}, 
+		{ 11, "Detective Pro Max"}
 };
 
 pair<int, int> gameRes(int a, int b)
@@ -127,6 +129,26 @@ int determine(int code, int currentIndex, int lastEMove, int last2EMove, int las
 			// First Three Moves
 			if (currentIndex == 0 || currentIndex == 2) return 0;
 			if (currentIndex == 1) return 1;
+			
+			// After Moves
+			if (sumFirst3Emove == 0) return 0;
+			if (sumFirst3Emove == 1)
+			{
+				if (currentIndex == 3) return 0;
+				return lastEMove;
+			}
+			if (sumFirst3Emove == 2)
+			{
+				if (currentIndex == 3) return 1;
+				return lastEMove;
+			}
+			if (sumFirst3Emove == 3) return 1;
+			
+		case 11:
+		
+			// First Three Moves
+			if (currentIndex == 0 || currentIndex == 2) return 1;
+			if (currentIndex == 1) return 0;
 			
 			// After Moves
 			if (sumFirst3Emove == 0) return 0;

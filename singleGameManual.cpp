@@ -7,7 +7,7 @@ using namespace std;
 // Build:		g++ -o manual.exe singleGame.o singleGameManual.o
 // Run:			.\manual.exe
 
-const int STRATEGYAMOUNT = 10;
+const int STRATEGYAMOUNT = 11;
 
 // A Single Cycle
 
