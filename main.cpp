@@ -58,7 +58,7 @@ void singleLoop(int population, int code[], int res[], int gameSize, int elimAnd
 	{
 		for (int j = i + 1; j < population; ++j)
 		{
-			pair<int, int> gameRes = startCycle(gameSize, code[i], code[j]);
+			pair<int, int> gameRes = startCycle(gameSize, code[i], code[j], false);
 			//~ cout << gameRes.first << " " << gameRes.second << "\n\n";
 			res[i] += gameRes.first;
 			res[j] += gameRes.second;
@@ -66,9 +66,11 @@ void singleLoop(int population, int code[], int res[], int gameSize, int elimAnd
 	}
 
 	cout << "Game Result: \n";
-	for (int k = 0; k < population; ++k) printf("%-5d ", code[k]);
+	// for (int k = 0; k < population; ++k) printf("%-5d ", code[k]);
+	for (int k = 0; k < population; ++k) printf("%-3d ", code[k]);
 	cout << "\n";
-	for (int k = 0; k < population; ++k) printf("%-5d ", res[k]);
+	// for (int k = 0; k < population; ++k) printf("%-5d ", res[k]);
+	for (int k = 0; k < population; ++k) printf("%-3d ", res[k]);
 	cout << "\n\n";
 	
 	// Step 2: Elimination and Clone
@@ -157,7 +159,8 @@ void singleLoop(int population, int code[], int res[], int gameSize, int elimAnd
 	
 	sort(code, code + population);
 	cout << "Updated Players: \n";
-	for (int k = 0; k < population; ++k) printf("%-5d ", code[k]);
+	// for (int k = 0; k < population; ++k) printf("%-5d ", code[k]);
+	for (int k = 0; k < population; ++k) printf("%-3d ", code[k]);
 	cout << "\n\n";
 
 }

@@ -216,7 +216,7 @@ pair<int, int> fullGame(int gameSize, int code1, int code2, int p1[], int p2[], 
 	return res;
 }
 
-pair<int, int> startCycle(int gameSize, int code1, int code2)
+pair<int, int> startCycle(int gameSize, int code1, int code2, bool showProgress)
 {
 	int p1[gameSize + 4], p2[gameSize + 4];
 	
@@ -228,6 +228,6 @@ pair<int, int> startCycle(int gameSize, int code1, int code2)
 	
 	//~ printCodeInstruction();
 		
-	pair<int, int> temp = fullGame(gameSize, code1, code2, p1, p2, false);
+	pair<int, int> temp = fullGame(gameSize, code1, code2, p1, p2, showProgress);
 	return temp;
 }
